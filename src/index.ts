@@ -11,6 +11,12 @@ app.onError((error, c) => {
 });
 
 app.get('*', async (c) => {
+  // console.log(c.env); // ok
+  // console.log(c.res); // ok
+  console.log(c.req); // crashed here !!!!!
+  // console.log(c.req.header('User-Agent')); // ok
+  // console.log(c.req.path); // ok
+  // console.log(c.req.url); // ok
   if (/\/polyfill(\.min)?\.js$/.test(c.req.path)) {
     return polyfillHandler(c);
   }
